@@ -1,8 +1,7 @@
-import dotenv from 'dotenv';
+const dotenv = require('dotenv');
 
 dotenv.config();
 
-export default {
-  MONGODB_URL: process.env.MONGODB_URL || 'mongodb://localhost/test',
-  JWT_SECRET: process.env.JWT_SECRET || 'somethingsecret'
+module.exports = function() {
+  MONGODB_URL: process.env.MONGODB_URL || 'mongodb://localhost/test'
 }

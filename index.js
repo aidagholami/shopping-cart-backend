@@ -1,13 +1,13 @@
-import express from 'express';
-import dotenv from 'dotenv';
-import config from './config';
-import mongoose from 'mongoose';
-import bodyParser from 'body-parser';
-import shortid from 'shortid';
+const express = require('express');
+const dotenv = require('dotenv');
+const config = require('./config');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const shortid = require('shortid');
 
 dotenv.config();
 
-const mongodbUrl = config.MONGODB_URL;
+const mongodbUrl = process.env.MONGODB_URL || 'mongodb://localhost/test';
 
 const app = express();
 app.use(bodyParser.json());
