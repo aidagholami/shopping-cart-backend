@@ -1,6 +1,6 @@
 const express = require('express');
+const cors = require('cors');
 const dotenv = require('dotenv');
-const config = require('./config');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const shortid = require('shortid');
@@ -10,6 +10,7 @@ dotenv.config();
 const mongodbUrl = process.env.MONGODB_URL || 'mongodb://localhost/test';
 
 const app = express();
+app.use(cors());
 app.use(bodyParser.json());
 
 mongoose.connect(mongodbUrl, {
@@ -72,5 +73,5 @@ app.post('/api/orders', async (req, res) => {
   res.send(order);
 })
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 4000;
 app.listen(port, () => console.log(`serve is on at ${port}`));
