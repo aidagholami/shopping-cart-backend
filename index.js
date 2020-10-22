@@ -61,6 +61,36 @@ app.delete('/api/products/:id', async (req, res) => {
 //   }]
 // }, { timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' } }))
 
+// const Order = mongoose.model('order', new mongoose.Schema({
+//   _id: {
+//     type: String,
+//     default: shortid.generate
+//   },
+//   email: String,
+//   name: String,
+//   address: {
+//     city: String,
+//     country_code: String,
+//     line1: String,
+//     postal_code: String,
+//     recipient_name: String,
+//     state: String
+//   },
+//   total: Number,
+//   cancelled: Boolean,
+//   paid: Boolean,
+//   payerID: String,
+//   paymentID: String,
+//   paymentToken: String,
+//   returnUrl: String,
+//   cartItems: [{
+//     _id: String,
+//     title: String,
+//     price: Number,
+//     count: Number
+//   }]
+// }, { timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' } }))
+
 const Order = mongoose.model('order', new mongoose.Schema({
   _id: {
     type: String,
@@ -68,21 +98,9 @@ const Order = mongoose.model('order', new mongoose.Schema({
   },
   email: String,
   name: String,
-  address: {
-    city: String,
-    country_code: String,
-    line1: String,
-    postal_code: String,
-    recipient_name: String,
-    state: String
-  },
+  address: String,
   total: Number,
-  cancelled: Boolean,
   paid: Boolean,
-  payerID: String,
-  paymentID: String,
-  paymentToken: String,
-  returnUrl: String,
   cartItems: [{
     _id: String,
     title: String,
