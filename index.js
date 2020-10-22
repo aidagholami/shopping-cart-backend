@@ -114,12 +114,7 @@ app.post('/api/orders', async (req, res) => {
     !req.body.email ||
     !req.body.address ||
     !req.body.total ||
-    !req.body.cancelled ||
     !req.body.paid ||
-    !req.body.payerID ||
-    !req.body.paymentID ||
-    !req.body.paymentToken ||
-    !req.body.returnUrl ||
     !req.body.cartItems) {
     return res.send({ message: 'Data is required.' });
   }
