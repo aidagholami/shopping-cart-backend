@@ -53,7 +53,7 @@ const Order = mongoose.model('order', new mongoose.Schema({
   name: String,
   address: String,
   total: Number,
-  cancelled: Boolean,
+  // cancelled: Boolean,
   paid: Boolean,
   // payerID: String,
   // paymentID: String,
@@ -72,7 +72,7 @@ app.post('/api/orders', async (req, res) => {
     !req.body.email ||
     !req.body.address ||
     !req.body.total ||
-    !req.body.cancelled ||
+    // !req.body.cancelled ||
     !req.body.paid ||
     // !req.body.payerID ||
     // !req.body.paymentID ||
