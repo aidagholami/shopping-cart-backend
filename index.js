@@ -44,53 +44,6 @@ app.delete('/api/products/:id', async (req, res) => {
   res.send(deletedProduct);
 })
 
-// const Order = mongoose.model('order', new mongoose.Schema({
-//   _id: {
-//     type: String,
-//     default: shortid.generate
-//   },
-//   email: String,
-//   name: String,
-//   address: String,
-//   total: Number,
-//   cartItems: [{
-//     _id: String,
-//     title: String,
-//     price: Number,
-//     count: Number
-//   }]
-// }, { timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' } }))
-
-// const Order = mongoose.model('order', new mongoose.Schema({
-//   _id: {
-//     type: String,
-//     default: shortid.generate
-//   },
-//   email: String,
-//   name: String,
-//   address: {
-//     city: String,
-//     country_code: String,
-//     line1: String,
-//     postal_code: String,
-//     recipient_name: String,
-//     state: String
-//   },
-//   total: Number,
-//   cancelled: Boolean,
-//   paid: Boolean,
-//   payerID: String,
-//   paymentID: String,
-//   paymentToken: String,
-//   returnUrl: String,
-//   cartItems: [{
-//     _id: String,
-//     title: String,
-//     price: Number,
-//     count: Number
-//   }]
-// }, { timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' } }))
-
 const Order = mongoose.model('order', new mongoose.Schema({
   _id: {
     type: String,
@@ -100,7 +53,12 @@ const Order = mongoose.model('order', new mongoose.Schema({
   name: String,
   address: String,
   total: Number,
+  cancelled: Boolean,
   paid: Boolean,
+  payerID: String,
+  paymentID: String,
+  paymentToken: String,
+  returnUrl: String,
   cartItems: [{
     _id: String,
     title: String,
@@ -115,6 +73,12 @@ app.post('/api/orders', async (req, res) => {
     !req.body.address ||
     !req.body.total ||
     !req.body.paid ||
+    !req.body.cancelled ||
+    !req.body.paid ||
+    !req.body.payerID ||
+    !req.body.paymentID ||
+    !req.body.paymentToken ||
+    !req.body.returnUrl ||
     !req.body.cartItems) {
     return res.send({ message: 'Data is required.' });
   }
