@@ -55,10 +55,10 @@ const Order = mongoose.model('order', new mongoose.Schema({
   total: Number,
   // cancelled: Boolean,
   paid: Boolean,
-  // payerID: String,
-  // paymentID: String,
-  // paymentToken: String,
-  // returnUrl: String,
+  payerID: String,
+  paymentID: String,
+  paymentToken: String,
+  returnUrl: String,
   cartItems: [{
     _id: String,
     title: String,
@@ -74,10 +74,10 @@ app.post('/api/orders', async (req, res) => {
     !req.body.total ||
     // !req.body.cancelled ||
     !req.body.paid ||
-    // !req.body.payerID ||
-    // !req.body.paymentID ||
-    // !req.body.paymentToken ||
-    // !req.body.returnUrl ||
+    !req.body.payerID ||
+    !req.body.paymentID ||
+    !req.body.paymentToken ||
+    !req.body.returnUrl ||
     !req.body.cartItems) {
     return res.send({ message: 'Data is required.' });
   }
